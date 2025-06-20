@@ -13,7 +13,7 @@ O projeto foi construído com as tecnologias mais modernas do ecossistema JavaSc
 
 ## 📸 Preview da Aplicação
 
-*(DICA: Grave um GIF curto mostrando o fluxo de cadastro, login com google, a tela de admin e a de perfil. Use uma ferramenta como ScreenToGif e arraste o arquivo para cá. Isso impressiona MUITO!)*
+![Preview da Aplicação](https://github.com/Danlihell/conectar-user-manager/blob/main/teste.gif?raw=true)
 
 ---
 

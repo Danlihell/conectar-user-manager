@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage.tsx';
 import RegisterPage from './pages/RegisterPage.tsx';
 import { AuthProvider } from './context/AuthContext';
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
+      {
+        index: true, // Marca esta como a rota padrão para a rota pai ('/')
+        element: <Navigate to="/login" replace />,
+      },
       {
         path: '/login',
         element: <LoginPage />,
