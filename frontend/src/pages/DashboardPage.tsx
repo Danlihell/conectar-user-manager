@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 interface UserFromApi {
     id: string;
@@ -31,7 +32,8 @@ export default function DashboardPage() {
                     params.append('order', order);
                 }
                 const queryString = params.toString();
-                const url = `http://localhost:3000/users${queryString ? `?${queryString}` : ''}`;
+                // CORREÇÃO APLICADA AQUI:
+                const url = `${import.meta.env.VITE_API_URL}/users${queryString ? `?${queryString}` : ''}`;
                 try {
                     const response = await axios.get(url, {
                         headers: { Authorization: `Bearer ${token}` },
@@ -63,7 +65,8 @@ export default function DashboardPage() {
         if (user?.id === userId) { alert('Você não pode excluir sua própria conta.'); return; }
         if (window.confirm('Tem certeza que deseja excluir este usuário?')) {
             try {
-                await axios.delete(`http://localhost:3000/users/${userId}`, { headers: { Authorization: `Bearer ${token}` } });
+
+                await axios.delete(`${import.meta.env.VITE_API_URL}/users/${userId}`, { headers: { Authorization: `Bearer ${token}` } });
                 setUserList(currentUsers => currentUsers.filter(u => u.id !== userId));
                 alert('Usuário excluído com sucesso!');
             } catch (error) { console.error('Falha ao excluir usuário:', error); alert('Ocorreu um erro ao excluir o usuário.'); }
@@ -74,6 +77,9 @@ export default function DashboardPage() {
 
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-slate-900 flex flex-col items-center p-4 sm:p-6 md:p-8 transition-colors duration-300">
+            <div className="absolute top-4 right-4 flex items-center gap-4">
+                <Link to="/profile" className="font-semibold text-green-600 dark:text-green-400 hover:underline">Meu Perfil</Link>
+            </div>
             <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-6xl mt-16">
                 <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-2">Dashboard</h1>
                 <h2 className="text-xl text-center text-gray-600 dark:text-gray-400 mb-6">Painel de Administração de Usuários</h2>
@@ -146,7 +152,9 @@ export default function DashboardPage() {
                     </table>
                 </div>
                 <div className="mt-8 w-48 mx-auto">
-                    <Button onClick={handleLogout}>
+                    <Button onClick={handleLogout}
+                        className="w-full bg-slate-600 dark:bg-slate-700 text-white font-bold py-2 px-4 rounded-md hover:bg-slate-700 dark:hover:bg-slate-600 transition-colors"
+                    >
                         Sair (Logout)
                     </Button>
                 </div>

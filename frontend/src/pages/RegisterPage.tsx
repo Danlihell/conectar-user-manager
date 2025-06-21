@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import Input from '../components/Input';
 import logoConectar from '../assets/conectarhortifruti_logo.png';
 
+
 export default function RegisterPage() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -19,7 +20,8 @@ export default function RegisterPage() {
             return;
         }
         try {
-            await axios.post('http://localhost:3000/users', {
+            // MUDANÇA AQUI:
+            await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
                 name,
                 email,
                 password,
@@ -35,6 +37,8 @@ export default function RegisterPage() {
 
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-slate-900 flex flex-col justify-center items-center p-4 transition-colors duration-300">
+            <div className="absolute top-4 right-4">
+            </div>
             <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg w-full max-w-md transition-colors duration-300">
                 <img src={logoConectar} alt="Logo Conectar Hortifruti" className="w-48 mx-auto mb-6" />
                 <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-6">Criar Conta</h1>
@@ -82,7 +86,7 @@ export default function RegisterPage() {
                 </form>
                 <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
                     Já tem uma conta?{' '}
-                    <Link to="/login" className="text-green-600 dark:text-green-400 hover:underline">
+                    <Link to="/login" className="font-semibold text-green-600 dark:text-green-400 hover:underline">
                         Entrar
                     </Link>
                 </p>
