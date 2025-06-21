@@ -9,10 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    UsersModule,
-    AuthModule,
     ConfigModule.forRoot({ isGlobal: true }),
-
 
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -26,6 +23,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         database: configService.get<string>('DB_DATABASE'),
         entities: [User],
         synchronize: true,
+
+        ssl: true,
+        extra: {
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        },
+
       }),
     }),
 
