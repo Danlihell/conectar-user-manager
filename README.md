@@ -13,8 +13,7 @@ O projeto foi construído com as tecnologias mais modernas do ecossistema JavaSc
 
 ## 📸 Preview da Aplicação
 
-*(Lembre-se de substituir este texto pela sua imagem ou GIF!)*
-![Preview da Aplicação](https://github.com/Danilhell/conectar-user-manager/blob/main/teste.gif?raw=true)
+![Preview da Aplicação](https://github.com/Danlihell/conectar-user-manager/blob/main/teste.gif?raw=true)
 
 ---
 
