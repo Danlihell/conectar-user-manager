@@ -53,6 +53,16 @@ O projeto foi construído com as tecnologias mais modernas do ecossistema JavaSc
 
 ---
 
+## 🔗 Links
+
+- **Frontend (Aplicação Online):** [https://conectar-user-manager.vercel.app](https://conectar-user-manager.vercel.app)
+- **Backend (Documentação da API):** [https://conectar-api-daniel.onrender.com/api](https://conectar-api-daniel.onrender.com/api)
+
+---
+### Credenciais para Teste (Admin)
+- **Email:** `login@email.com`
+- **Senha:** `minhasenha123`
+
 ## ⚙️ Como Rodar o Projeto Localmente
 
 ### Pré-requisitos
